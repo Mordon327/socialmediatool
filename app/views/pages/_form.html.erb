@@ -1,0 +1,7 @@
+<%= form_for @post, class: "form-horizontal" do |f| %>
+
+  <% if @post.errors.any? %>
+    <% @post.errors.full_messages.each do |error| %>
+      <%= js add_gritter(error, title: "Social Media Tool Notification", sticky: false) %>
+    <% end %>
+  <% end %>

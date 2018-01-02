@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'pages/home'
   get 'facebook', to: 'pages#facebook'
   get 'twitter', to: 'pages#twitter'
+  get 'instagram', to: 'pages#instagram'
 
   resources :blogs
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
