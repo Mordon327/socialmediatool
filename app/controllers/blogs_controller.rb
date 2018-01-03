@@ -4,26 +4,31 @@ class BlogsController < ApplicationController
   # GET /blogs
   # GET /blogs.json
   def index
+    can_see
     @blogs = Blog.all
   end
 
   # GET /blogs/1
   # GET /blogs/1.json
   def show
+    can_see
   end
 
   # GET /blogs/new
   def new
+    can_see
     @blog = Blog.new
   end
 
   # GET /blogs/1/edit
   def edit
+    can_see
   end
 
   # POST /blogs
   # POST /blogs.json
   def create
+    can_see
     @blog = Blog.new(blog_params)
 
     respond_to do |format|
@@ -40,6 +45,7 @@ class BlogsController < ApplicationController
   # PATCH/PUT /blogs/1
   # PATCH/PUT /blogs/1.json
   def update
+    can_see
     respond_to do |format|
       if @blog.update(blog_params)
         format.html { redirect_to @blog, notice: 'Blog was successfully updated.' }
@@ -54,6 +60,7 @@ class BlogsController < ApplicationController
   # DELETE /blogs/1
   # DELETE /blogs/1.json
   def destroy
+    can_see
     @blog.destroy
     respond_to do |format|
       format.html { redirect_to blogs_url, notice: 'Blog was successfully destroyed.' }
@@ -71,4 +78,11 @@ class BlogsController < ApplicationController
     def blog_params
       params.require(:blog).permit(:title, :body)
     end
+
+    def can_see
+    if !current_user
+      redirect_to new_user_session_path
+      flash[:alert] = "Log in to view this page."
+    end
+  end
 end
