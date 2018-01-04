@@ -1,1 +1,25 @@
 @import "bootstrap";
+
+.boxed {
+  background-color: white;
+  padding: 30px;
+}
+
+.boxed-no-background {
+  padding-top: 30px;
+}
+
+.side-by-side {
+  display: flex;
+  margin-top: 30px;
+}
+
+.space-by-side {
+  margin-right: 15px;
+}
+
+.align-center {
+  display: flex;
+  justify-content: center;
+
+}
